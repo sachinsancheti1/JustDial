@@ -4,8 +4,11 @@ library(tidyr)
 library(stringr)
 library(rjson)
 library(shiny)
+library(bitops)
+library(RCurl)
 parseIt <- function(x){
-  htmlTreeParse(x, useInternalNodes = TRUE)
+  txt = getURL(x)
+  htmlTreeParse(txt,asText = TRUE,useInternalNodes = TRUE)
 }
 shinyServer(function(input, output) {
   output$jdtable <- renderDataTable({
