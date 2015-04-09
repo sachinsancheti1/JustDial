@@ -1,5 +1,6 @@
 library(shiny)
 library(shinythemes)
+library(RJSONIO)
 json_data <- fromJSON(file="places.json")
 places = as.data.frame(json_data)
 shinyUI(
