@@ -82,10 +82,13 @@ shinyServer(function(input, output) {
                       "site:",unlist(str_trim(site)),
                       "the end",sep="\n"))
             cat("_____________________________ \n")
-            if(is.null(name) | length(name)==0)
+            if(is.null(name) | length(name)==0){
               cat("Name is empty\n");name=""
-            if(is.null(numb) | length(numb)==0)
+            }
+              
+            if(is.null(numb) | length(numb)==0){
               cat("Num is empty\n");numb = ""
+            }
             if(is.null(addr) | length(addr)==0)
               cat("Address is empty\n")
             if(is.null(links) | length(links)==0)
@@ -93,10 +96,9 @@ shinyServer(function(input, output) {
             if(is.null(site) | length(site)==0)
               cat("Site is empty\n")
             dt = rbind(dt,cbind(name,numb,addr,links,site))
+            incProgress(i*24/100*numpage*24, detail = paste("progress",round(i*(24)/100,0),"%","of page",j,"\n","Record number",dim(rt)[1]))
+            Sys.sleep(0.01)
           }
-          
-          incProgress(i*24/100*numpage*24, detail = paste("Doing part",round(i*(24)/(numpage*24),0),"%","of page",j))
-          Sys.sleep(0.1)
         }
         rt = rbind(rt,dt)
       }

@@ -11,12 +11,12 @@ shinyUI(
     h1("Just Dial Extraction"),
     sidebarLayout(
       sidebarPanel(
-        selectInput("city",selected = "coimbatore",
+        selectInput("city",selected = "coonoor",
                     "Please select the city",
                     choices =levels(places$lazyLoadCities) ),
         textInput("search",
                   label = "What do you want to see?",
-                  value = ""),
+                  value = "Clubs"),
         numericInput("numpages",
                      "Pages",
                      100),
