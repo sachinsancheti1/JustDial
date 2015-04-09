@@ -20,7 +20,8 @@ shinyUI(
         numericInput("numpages",
                      "Pages",
                      2),
-        actionButton("goButton", "Go!")
+        actionButton("goButton", "Go!"),
+        downloadLink('downloadData', 'Download')
       ),
       mainPanel(
         dataTableOutput("jdtable")

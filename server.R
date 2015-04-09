@@ -11,7 +11,19 @@ parseIt <- function(x){
   htmlTreeParse(txt,asText = TRUE,useInternalNodes = TRUE)
 }
 shinyServer(function(input, output) {
-  output$jdtable <- renderDataTable({
+  output$downloadData <- downloadHandler(
+    filename = function() {
+      qry = isolate(input$search)
+      cty = isolate(gsub(" ", "", input$city, fixed = TRUE))
+      numpage = isolate(input$numpages)
+      paste(paste("Extract",qry,cty,numpage,sep = "-"),".csv",sep="")
+    },
+    content = function(con) {
+      write.csv(datatab(), con)
+    }
+  )
+  
+  datatab <- reactive({
     if (input$goButton == 0)
       return()
     input$goButton
@@ -78,8 +90,11 @@ shinyServer(function(input, output) {
       },
       error = function(e) return(rt)
       )
-      rt
+      apply(rt,2,str_trim)
     })
-  },
-  options = list(pageLength = 100))
+  })
+  
+  output$jdtable <- renderDataTable(
+    datatab(),
+    options = list(pageLength = 100))
 })
