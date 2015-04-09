@@ -38,18 +38,18 @@ shinyServer(function(input, output) {
                      cty,"/",
                      qry,"/page-",j,
                      sep = "")
-        ps = parseIt(link)
+        ps = tryCatch(parseIt(link), error = function(e) break)
         tc = xpathApply(ps,'//section/section/section/section/section/section/aside/p',fun = xmlAttrs)
         tt = xpathApply(ps,'//section/section/section/section/section/section/aside/p',fun = xmlValue)
         tlink = xpathApply(ps,'//section/section/section/section/section/section/aside/p',fun = xmlChildren)
         dt = data.frame(Name=character(),Number= character(),Address=character(), Links = character(), Site = character())
-        for(i in 1:(length(tc)-7)){
+        if(length(tc)==0) break
+        for(i in 1:(length(tc)-3)){
           if(tc[[i]][1]=='jcnwrp'){
             name=as.character(tt[[i]][1])
             rr = tryCatch(xmlAttrs(xmlChildren(tlink[[i]]$span)$a) %>% as.data.frame,
                           error = function(e) NULL)
-            site = ""
-            cat(name,site)
+            site = "_"
             if(!is.null(rr)){
               links = tryCatch(rr["href",] %>% as.character,
                                error = function(e) NULL)
@@ -66,21 +66,36 @@ shinyServer(function(input, output) {
                   )
                 }
                 site = as.character(unlist(newp1))
-                if(is.null(site))
-                  site = ""
               }
             }
-            cat(site)
+            if(is.null(site) | length(site)==0)
+              site = "_"
             if(tc[[i+1]][1]=='jrcw')
-              numb = as.character(tt[[i+1]][1])
+              numb = tryCatch(as.character(tt[[i+1]][1]),error = function(e) return("_"))
             if(tc[[i+2]][1]=='jaid')
-              addr = as.character(tt[[i+2]][1])
-            i = i+2
+              addr = tryCatch(as.character(tt[[i+2]][1]),error = function(e) return("_"))
+            i = i+2            
+            cat(paste("name:",str_trim(name),
+                      "numb:",str_trim(numb),
+                      "addr:",str_trim(addr),
+                      "links:",str_trim(links),
+                      "site:",unlist(str_trim(site)),
+                      "the end",sep="\n"))
+            cat("_____________________________ \n")
+            if(is.null(name) | length(name)==0)
+              cat("Name is empty\n");name=""
+            if(is.null(numb) | length(numb)==0)
+              cat("Num is empty\n");numb = ""
+            if(is.null(addr) | length(addr)==0)
+              cat("Address is empty\n")
+            if(is.null(links) | length(links)==0)
+              cat("Links is empty\n")
+            if(is.null(site) | length(site)==0)
+              cat("Site is empty\n")
             dt = rbind(dt,cbind(name,numb,addr,links,site))
-            name<-numb<-addr<-links<-NULL
           }
           
-          incProgress(i*24/100*numpage*24, detail = paste("Doing part",round(i*(24)/(numpage*24),2),"%"))
+          incProgress(i*24/100*numpage*24, detail = paste("Doing part",round(i*(24)/(numpage*24),0),"%","of page",j))
           Sys.sleep(0.1)
         }
         rt = rbind(rt,dt)

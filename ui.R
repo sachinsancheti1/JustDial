@@ -16,10 +16,10 @@ shinyUI(
                     choices =levels(places$lazyLoadCities) ),
         textInput("search",
                   label = "What do you want to see?",
-                  value = "Colleges"),
+                  value = ""),
         numericInput("numpages",
                      "Pages",
-                     2),
+                     100),
         actionButton("goButton", "Go!"),
         downloadLink('downloadData', 'Download')
       ),
