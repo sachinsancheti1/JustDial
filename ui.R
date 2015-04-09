@@ -1,4 +1,3 @@
-library(rjson)
 library(shiny)
 library(shinythemes)
 json_data <- fromJSON(file="places.json")
