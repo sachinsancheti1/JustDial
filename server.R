@@ -5,6 +5,7 @@ library(stringr)
 library(shiny)
 library(bitops)
 library(RCurl)
+#library(RJSONIO)
 parseIt <- function(x){
   txt = getURL(x)
   htmlTreeParse(txt,asText = TRUE,useInternalNodes = TRUE)
@@ -37,6 +38,7 @@ shinyServer(function(input, output) {
                      cty,"/",
                      qry,"/page-",j,
                      sep = "")
+        cat("Parsing from:",link,"\n")
         ps = tryCatch(parseIt(link), error = function(e) break)
         tc = xpathApply(ps,'//section/section/section/section/section/section/aside/p',fun = xmlAttrs)
         tt = xpathApply(ps,'//section/section/section/section/section/section/aside/p',fun = xmlValue)
@@ -74,13 +76,13 @@ shinyServer(function(input, output) {
             if(tc[[i+2]][1]=='jaid')
               addr = tryCatch(as.character(tt[[i+2]][1]),error = function(e) return("_"))
             i = i+2            
-            cat(paste("name:",str_trim(name),
-                      "numb:",str_trim(numb),
-                      "addr:",str_trim(addr),
-                      "links:",str_trim(links),
-                      "site:",unlist(str_trim(site)),
-                      "the end",sep="\n"))
-            cat("_____________________________ \n")
+#             cat(paste("name:",str_trim(name),
+#                       "numb:",str_trim(numb),
+#                       "addr:",str_trim(addr),
+#                       "links:",str_trim(links),
+#                       "site:",unlist(str_trim(site)),
+#                       "the end",sep="\n"))
+#             cat("_____________________________ \n")
             if(is.null(name) | length(name)==0){
               cat("Name is empty\n");name=""
             }
@@ -95,8 +97,8 @@ shinyServer(function(input, output) {
             if(is.null(site) | length(site)==0)
               cat("Site is empty\n")
             dt = rbind(dt,cbind(name,numb,addr,links,site))
-            incProgress(i*24/100*numpage*24, detail = paste("progress",round(i*(24)/100,0),"%","of page",j,"\n","Record number",dim(rt)[1]))
-            Sys.sleep(0.01)
+            incProgress(i*24/100*numpage*24, detail = paste("progress",round(i/length(tc),2)*100,"%","of page",j,"\n","Record number",dim(rt)[1]))
+            Sys.sleep(0.1)
           }
         }
         rt = rbind(rt,dt)

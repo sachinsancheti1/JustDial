@@ -1,0 +1,51 @@
+2015-04-07T15:54:45.417773+00:00 shinyapps[37519]: Listening on http://0.0.0.0:33689
+2015-04-07T15:55:13.359212+00:00 shinyapps[37519]: Shiny version: 0.11.1
+2015-04-07T15:55:13.361088+00:00 shinyapps[37519]: knitr version: 0.0.0
+2015-04-07T15:55:13.359159+00:00 shinyapps[37519]: R version: 3.1.2
+2015-04-07T15:55:13.360472+00:00 shinyapps[37519]: rmarkdown version: 0.0.0
+2015-04-07T15:55:13.599955+00:00 shinyapps[37519]: 
+2015-04-07T15:55:13.599960+00:00 shinyapps[37519]: Starting Shiny with process ID: '97'
+2015-04-07T15:55:13.606916+00:00 shinyapps[37519]: 
+2015-04-07T15:55:13.606918+00:00 shinyapps[37519]: Listening on http://0.0.0.0:49126
+2015-04-07T15:55:22.281512+00:00 shinyapps[37519]: R version: 3.1.2
+2015-04-07T15:55:22.282781+00:00 shinyapps[37519]: rmarkdown version: 0.0.0
+2015-04-07T15:55:22.520303+00:00 shinyapps[37519]: Starting Shiny with process ID: '105'
+2015-04-07T15:55:22.520299+00:00 shinyapps[37519]: 
+2015-04-07T15:55:22.281553+00:00 shinyapps[37519]: Shiny version: 0.11.1
+2015-04-07T15:55:22.283212+00:00 shinyapps[37519]: knitr version: 0.0.0
+2015-04-07T15:55:22.527176+00:00 shinyapps[37519]: 
+2015-04-07T15:55:22.527178+00:00 shinyapps[37519]: Listening on http://0.0.0.0:32779
+2015-04-07T15:56:17.326912+00:00 shinyapps[37519]: R version: 3.1.2
+2015-04-07T15:56:17.328303+00:00 shinyapps[37519]: rmarkdown version: 0.0.0
+2015-04-07T15:56:17.576754+00:00 shinyapps[37519]: 
+2015-04-07T15:56:17.326976+00:00 shinyapps[37519]: Shiny version: 0.11.1
+2015-04-07T15:56:17.328815+00:00 shinyapps[37519]: knitr version: 0.0.0
+2015-04-07T15:56:17.576758+00:00 shinyapps[37519]: Starting Shiny with process ID: '116'
+2015-04-07T15:56:17.584262+00:00 shinyapps[37519]: 
+2015-04-07T15:56:17.584264+00:00 shinyapps[37519]: Listening on http://0.0.0.0:51432
+2015-04-07T15:57:28.602125+00:00 shinyapps[37519]: Error : failed to load external entity "http://www.justdial.com/coimbatore/Colleges/page-1"
+2015-04-07T15:57:28.602129+00:00 shinyapps[37519]: 
+2015-04-07T16:07:19.402570+00:00 shinyapps[37519]: Error : failed to load external entity "http://www.justdial.com/coimbatore/Colleges/page-1"
+2015-04-07T16:07:19.402573+00:00 shinyapps[37519]: 
+2015-04-07T16:23:44.439995+00:00 shinyapps[37519]: Shiny version: 0.11.1
+2015-04-07T16:23:44.441673+00:00 shinyapps[37519]: knitr version: 0.0.0
+2015-04-07T16:23:44.439935+00:00 shinyapps[37519]: R version: 3.1.2
+2015-04-07T16:23:44.441236+00:00 shinyapps[37519]: rmarkdown version: 0.0.0
+2015-04-07T16:23:44.678853+00:00 shinyapps[37519]: 
+2015-04-07T16:23:44.678857+00:00 shinyapps[37519]: Starting Shiny with process ID: '124'
+2015-04-07T16:23:44.685708+00:00 shinyapps[37519]: 
+2015-04-07T16:23:44.685710+00:00 shinyapps[37519]: Listening on http://0.0.0.0:60939
+2015-04-07T16:24:54.943056+00:00 shinyapps[37519]: Error : failed to load external entity "http://www.justdial.com/coimbatore/Colleges/page-1"
+2015-04-07T16:24:54.943060+00:00 shinyapps[37519]: 
+2015-04-07T16:41:58.489146+00:00 shinyapps[37519]: R version: 3.1.2
+2015-04-07T16:41:58.489151+00:00 shinyapps[37519]: Shiny version: 0.11.1
+2015-04-07T16:41:58.490472+00:00 shinyapps[37519]: rmarkdown version: 0.0.0
+2015-04-07T16:41:58.490916+00:00 shinyapps[37519]: knitr version: 0.0.0
+2015-04-07T16:41:58.766773+00:00 shinyapps[37519]: 
+2015-04-07T16:41:58.766777+00:00 shinyapps[37519]: Starting Shiny with process ID: '132'
+2015-04-07T16:41:58.774028+00:00 shinyapps[37519]: 
+2015-04-07T16:41:58.774031+00:00 shinyapps[37519]: Listening on http://0.0.0.0:33776
+2015-04-07T16:43:04.606119+00:00 shinyapps[37519]: Error : failed to load external entity "http://www.justdial.com/coimbatore/Colleges/page-1"
+2015-04-07T16:43:04.606122+00:00 shinyapps[37519]: 
+2015-04-07T16:44:04.682322+00:00 shinyapps[37519]: Error : failed to load external entity "http://www.justdial.com/chittorgarh/Colleges/page-1"
+2015-04-07T16:44:04.682326+00:00 shinyapps[37519]: 
