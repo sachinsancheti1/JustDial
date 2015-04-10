@@ -1,7 +1,7 @@
 library(shiny)
 library(shinythemes)
 library(RJSONIO)
-json_data <- fromJSON(file="places.json")
+json_data <- fromJSON(content ="places.json")
 places = as.data.frame(json_data)
 shinyUI(
   fluidPage(theme = shinytheme("flatly"),
