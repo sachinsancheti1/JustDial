@@ -126,7 +126,7 @@ table(latlon.it2$Status)
 latlon.it2 <- readRDS("latlon.it2.rds")
 uniquedataset = dataset %>% tbl_df %>%
   select(name,numb,A,B,links,Pincode) %>% unique %>%
-  mutate(Address = B, City = "India") %>% filter(row_number()>2680)
+  mutate(Address = B, City = "India") %>% filter(row_number()>2680 & row_number()<=5480)
 latlon.it3 <- tbl_df(findlocation(uniquedataset$Address,
                                   uniquedataset$A,
                                   uniquedataset$City,
@@ -134,5 +134,57 @@ latlon.it3 <- tbl_df(findlocation(uniquedataset$Address,
 latlon.it3<-rbind(latlon.it2,latlon.it3)
 table(latlon.it3$Status)
 
+latlon.it3<- readRDS("latlon.it3.rds")
+uniquedataset = dataset %>% tbl_df %>%
+  select(name,numb,A,B,links,Pincode) %>% unique %>%
+  mutate(Address = B, City = "India") %>% filter(row_number()>5480 & row_number()<=5800)
+latlon.it4 <- tbl_df(findlocation(uniquedataset$Address,
+                                  uniquedataset$A,
+                                  uniquedataset$City,
+                                  uniquedataset$Pincode))
+View(latlon.it4)
+latlon.it4<-rbind(latlon.it3,latlon.it4)
+
+uniquedataset = dataset %>% tbl_df %>%
+  select(name,numb,A,B,links,Pincode) %>% unique %>%
+  mutate(Address = B, City = "India") %>% filter(row_number()>5800 & row_number()<=7800)
+latlon.it5 <- tbl_df(findlocation(uniquedataset$Address,
+                                  uniquedataset$A,
+                                  uniquedataset$City,
+                                  uniquedataset$Pincode))
+latlon.it5<-rbind(latlon.it4,latlon.it5)
+
+uniquedataset = dataset %>% tbl_df %>%
+  select(name,numb,A,B,links,Pincode) %>% unique %>%
+  mutate(Address = B, City = "India") %>% filter(row_number()>7800 & row_number()<=9000)
+latlon.it6 <- tbl_df(findlocation(uniquedataset$Address,
+                                  uniquedataset$A,
+                                  uniquedataset$City,
+                                  uniquedataset$Pincode))
+latlon.it6<-rbind(latlon.it5,latlon.it6)
+saveRDS(latlon.it6, "latlon.it6.rds")
+
+
+uniquedataset = dataset %>% tbl_df %>%
+  select(name,numb,A,B,links,Pincode) %>% unique %>%
+  mutate(Address = B, City = "India") %>% filter(row_number()>9000 & row_number()<=11700)
+latlon.it7 <- tbl_df(findlocation(uniquedataset$Address,
+                                  uniquedataset$A,
+                                  uniquedataset$City,
+                                  uniquedataset$Pincode))
+latlon.it7<-rbind(latlon.it6,latlon.it7)
+#saveRDS(latlon.it7, "latlon.it7.rds")
+latlon.it7 <- readRDS("latlon.it7.rds")
+
+uniquedataset = dataset %>% tbl_df %>%
+  select(name,numb,A,B,links,Pincode) %>% unique %>%
+  mutate(Address = B, City = "India") %>% filter(row_number()>11700 & row_number()<=14200)
+latlon.it8 <- tbl_df(findlocation(uniquedataset$Address,
+                                  uniquedataset$A,
+                                  uniquedataset$City,
+                                  uniquedataset$Pincode))
+
 View(latlon)
 latlon %>% write.csv("check.csv")
+
+
