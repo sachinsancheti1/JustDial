@@ -11,6 +11,15 @@ Install the packages *shiny* and *Rcpp* by pasting the following code in the con
 ```r
 install.packages("shiny")
 install.packages("Rcpp")
+install.packages("shiny")
+install.packages("shinythemes")
+install.packages("RJSONIO")
+install.packages("XML")
+install.packages("tidyr")
+install.packages("dplyr")
+install.packages("RCurl")
+install.packages("bitops")
+install.packages("stringr")
 ```
 
 ####Run the module in a web browser
