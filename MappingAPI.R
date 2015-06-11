@@ -16,7 +16,7 @@ convert.magic <- function(obj,types){
   obj
 }
 
-distfromGG <- function(x){
+distfromGG <- function(x, lat=Latitude,lon = Longitude){
   if(sum(class(x) %in% "data.frame")>0){
     totalruns = dim(x)[1]
   }else{totalruns = length(x)}
@@ -31,7 +31,7 @@ distfromGG <- function(x){
     minutes=character(),
     hours=character())
   for(i in 1:totalruns){
-    data.dist = tryCatch(mapdist(gokul.gardens,x[i],mode = 'driving'),
+    data.dist = tryCatch(mapdist(gokul.gardens,c(x[i,lon],x[i,lat]),mode = 'driving'),
                          error = function(e) data.frame(
                            from=as.character(""),
                            to=as.character(""),
@@ -178,11 +178,36 @@ latlon.it7 <- readRDS("latlon.it7.rds")
 
 uniquedataset = dataset %>% tbl_df %>%
   select(name,numb,A,B,links,Pincode) %>% unique %>%
-  mutate(Address = B, City = "India") %>% filter(row_number()>11700 & row_number()<=14200)
+  mutate(Address = B, City = "India") %>% filter(row_number()>11700 & row_number()<=14680)
 latlon.it8 <- tbl_df(findlocation(uniquedataset$Address,
                                   uniquedataset$A,
                                   uniquedataset$City,
                                   uniquedataset$Pincode))
+latlon.it8 <- rbind(latlon.it7,latlon.it8)
+#saveRDS(latlon.it8, "latlon.it8.rds")
+latlon.it8<-readRDS("latlon.it8.rds")
+
+uniquedataset = dataset %>% tbl_df %>%
+  select(name,numb,A,B,links,Pincode) %>% unique %>%
+  mutate(Address = B, City = "India") %>% filter(row_number()>14680 & row_number()<=15000)
+latlon.it9 <- tbl_df(findlocation(uniquedataset$Address,
+                                  uniquedataset$A,
+                                  uniquedataset$City,
+                                  uniquedataset$Pincode))
+latlon.it9 <- rbind(latlon.it8,latlon.it9)
+saveRDS(latlon.it9, "latlon.it9.rds")
+uniquedataset = dataset %>% tbl_df %>%
+  select(name,numb,A,B,links,Pincode) %>% unique %>%
+  mutate(Address = B, City = "India") %>% filter(row_number()>15000)
+latlon.it10 <- tbl_df(findlocation(uniquedataset$Address,
+                                   uniquedataset$A,
+                                   uniquedataset$City,
+                                   uniquedataset$Pincode))
+latlon.final <- rbind(latlon.it9,latlon.it10)
+#saveRDS(latlon.final,"latlon.final.rds")
+
+latlon.final =readRDS("latlon.final.rds")
+
 
 View(latlon)
 latlon %>% write.csv("check.csv")

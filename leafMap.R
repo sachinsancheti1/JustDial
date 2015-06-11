@@ -1,22 +1,22 @@
 
-finalized.dataset <- cbind(uniquedataset,latlon)
-finalized.dataset$Latitude = as.numeric(as.character(finalized.dataset$Latitude))
-finalized.dataset$Longitude = as.numeric(as.character(finalized.dataset$Longitude))
-#finalized.dataset %>% write.csv("check2.csv")
-
-finalized.dataset$Town %>% head
-
-#distfromGG("Coimbatore Airport")
-finalized.dist = distfromGG(finalized.dataset$Town)
-complete.dataset <- cbind(finalized.dataset,finalized.dist)
-names(complete.dataset)
-write.csv(complete.dataset,"check3.csv")
-
-complete.dataset %>%
-  select(km) %>%
-  as.numeric %>%
-  na.omit %>%
-  ggvis(props(x=~km)) 
+# finalized.dataset <- cbind(uniquedataset,latlon)
+# finalized.dataset$Latitude = as.numeric(as.character(finalized.dataset$Latitude))
+# finalized.dataset$Longitude = as.numeric(as.character(finalized.dataset$Longitude))
+# #finalized.dataset %>% write.csv("check2.csv")
+# 
+# finalized.dataset$Town %>% head
+# 
+# #distfromGG("Coimbatore Airport")
+# finalized.dist = distfromGG(finalized.dataset$Town)
+# complete.dataset <- cbind(finalized.dataset,finalized.dist)
+# names(complete.dataset)
+# write.csv(complete.dataset,"check3.csv")
+# 
+# complete.dataset %>%
+#   select(km) %>%
+#   as.numeric %>%
+#   na.omit %>%
+#   ggvis(props(x=~km)) 
 
 # GGMAPS + GGPLOT2 package usage for drawing
 bologna <- "Coimbatore"
@@ -35,15 +35,17 @@ qplot(x = Longitude,
       geom = c("point","density2d"))
 
 
+temp=as.data.frame(cbind(as.numeric(as.character(latlon.it7$Longitude)),
+                     as.numeric(as.character(latlon.it7$Latitude))))
 nationalmap + stat_density2d(
   aes(
-    x = Longitude,
-    y = Latitude,
+    x = V1,
+    y = V2,
     fill = ..level..,
     alpha = ..level..),
   size = 10, 
   bins = 20,
-  data = finalized.dataset, 
+  data = temp, 
   geom = "polygon", 
   show_guide = FALSE)
 
